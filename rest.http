@@ -1,0 +1,505 @@
+// Educational-Institute Test Project
+
+@baseUrl = http://localhost:8081
+@user-agent = rest-client-ext
+@baseAuth = admin
+@basePass = admin
+
+
+
+### Home-Page
+GET http://localhost:8081/
+
+
+### Page not found Errors Check
+GET http://localhost:8081/abc
+
+
+### superAdmin home
+GET http://localhost:8081/superAdmin/
+# Authorization: Basic {{baseAuth}} {{basePass}}
+User-Agent: {{user-agent}}
+Authorization: Basic admin admin
+
+
+
+### createSuperAdminLogin
+POST http://localhost:8081/superAdmin/createSuperAdminLogin
+Authorization: Basic admin:admin
+Content-Type: application/json
+
+{
+    "superAdminUserName":"Gokul",
+    "superAdminPassword":"admin",
+    "superAdminConfirmPassword":"admin",
+    "emailId":"gokul_kku@gmail.com"
+}
+
+
+
+
+### superAdmin login
+POST http://localhost:8081/superAdmin/login
+User-Agent: {{user-agent}}
+Authorization: Basic admin:admin
+Content-Type: application/json
+
+{
+    "userName":"Super Admin",
+    "password":"aDminN@1!",
+    "confirmPassword":"aDminN@1!"
+}
+
+
+### createAdmins
+POST http://localhost:8081/superAdmin/createAdmins
+Authorization: Basic admin:admin
+Content-Type: application/json
+
+{
+    "name":"Raja Balan",
+    "email":"raj@gmail.com",
+    "userName":"raj_bala",
+    "password":"raj@07",
+    "confirmPassword":"raj@07"
+}
+
+
+### showAllAdmins
+GET http://localhost:8081/superAdmin/showAllAdmins
+Authorization: Basic admin:admin
+
+
+### getAdminDeatils
+GET http://localhost:8081/superAdmin/getAdminDetails?username=rajan raj
+Authorization: Basic admin:admin
+
+
+### removeAdmin
+DELETE http://localhost:8081/superAdmin/removeAdmin/raj_bala
+Authorization: Basic admin:admin
+
+
+
+### Admin Home
+POST http://localhost:8081/admin/
+Authorization: Basic admin:admin
+Content-Type: application/json
+
+{
+    "name":"shifli"
+}
+
+
+### Admin login
+POST http://localhost:8081/admin/login
+Authorization: Basic admin:admin@123
+Content-Type: application/json
+
+{
+    "userName":"raj_bala",
+    "password":"raj@07",
+    "confirmPassword":"raj@07"
+}
+
+
+### createStaff
+POST http://localhost:8081/admin/createStaff
+Authorization: Basic admin:admin@123
+Content-Type: application/json
+
+{
+  "sId": 1003,
+  "staffName": "Anbarasan",
+  "personalInformation": {
+    "gender": "Male",
+    "address": "7/21, Mandeiveli, Chennai",
+    "maritalStatus": "Single",
+    "contact": {
+      "phone": "99431121",
+      "emailId": "arivu@gmail.com"
+    }
+  },
+  "educationQualification": {
+    "SSLC": {
+      "year": "2000-2001",
+      "school": "PBSS Hr Sec School, Chennai",
+      "percentage": 80.4
+    },
+    "HSLC": {
+      "year": "2002-2003",
+      "school": "PBSS Hr Sec School, Chennai",
+      "percentage": 60.4
+    },
+    "UG": {
+      "degree": "BSc",
+      "major": "Computer Science",
+      "year": "2003-2005",
+      "school": "Pachiraj Arts Collage, Chennai",
+      "percentage": 60
+    },
+    "PG": {
+      "degree": "MCA",
+      "major": "Computer Science",
+      "year": "2006-2008",
+      "school": "Pachiraj Arts Collage, Chennai",
+      "percentage": 66.6
+    },
+    "doctrate": {}
+  },
+  "dateOfJoin": "12",
+  "exprience": "3",
+  "salary": 50000,
+  "academicInformations": [
+    {
+      "class": "10th",
+      "subject": "Computer Science"
+    },
+    {
+      "class": "th",
+      "subject": "Lab, Basic of Computer and its Applications"
+    }
+  ],
+  "loginCredentials": {
+    "userName": "anbu_11",
+    "password": "anbu@11",
+    "confirmPassword": "anbu@11"
+  }
+}
+
+
+
+### getStaffDetails
+GET http://localhost:8081/admin/getStaffDetails?userName=anbu_11
+Authorization: Basic admin:admin@123
+
+
+
+### getAllStaffDetails
+GET http://localhost:8081/admin/showAllStaffs
+Authorization: Basic admin:admin@123
+
+
+
+### removeStaff
+DELETE http://localhost:8081/admin/removeStaff
+Authorization: Basic admin:admin@123
+Content-Type: application/json
+
+{
+  "sId":1001,
+  "staffUserName":"anbu_11"
+}
+
+
+
+### staffLogin
+POST http://localhost:8081/admin/staffLogin/
+Authorization: Basic admin:admin@123
+Content-Type: application/json
+
+{
+  "userName":"arivu_11",
+  "password":"arivu@11",
+  "confirmPassword":"rivu@11"
+}
+
+
+
+
+### createClass
+POST http://localhost:8081/admin/createClass
+Authorization: Basic admin:admin@123
+Content-Type: application/json
+
+{
+  "className":"11th",
+  "classCode":"C11",
+  "maxStrength":10,
+  "classIncharge":[
+    "Arivu","Anbu"
+  ],
+ "subjects":{
+    "M012":"Maths",
+    "P112":"Physics-1",
+    "P212":"Physics-2",
+    "B012":"Biology",
+    "L112":"Language-1",
+    "L212":"Language-2"
+  },
+  "createdUser":"raj_bala",
+  "createdOn":"2021-05-20"
+}
+
+
+### getClassDetails
+GET http://localhost:8081/admin/getClassDetails/C12
+Authorization: Basic admin:admin@123
+
+
+### showAllClasses
+GET http://localhost:8081/admin/showAllClasses
+Authorization: Basic admin:admin@123
+
+
+### removeClass
+DELETE http://localhost:8081/admin/removeClass
+Authorization: Basic admin:admin@123
+Content-Type: application/json
+
+{
+  "className":"12th",
+  "classCode":"C12"
+}
+
+
+
+### Staff APIs
+
+### root staff
+PATCH http://localhost:8081/staff/
+Authorization: Basic staff:staff@123
+Content-Type: application/json
+
+{
+  "module":"Staff Page"
+}
+
+
+
+### staffLogin
+POST http://localhost:8081/staff/login
+Authorization: Basic staff:staff@123
+Content-Type: application/json
+
+{
+  "userName":"arivu_11",
+  "password":"arivu@11",
+  "confirmPassword":"arivu@11"
+}
+
+
+
+
+
+### createStudent
+POST http://localhost:8081/staff/createStudent
+Authorization: Basic staff:staff@123
+Content-Type: application/json
+
+{
+  "sId":3001,
+  "studentName":"Jasmine",
+  "class":"11th",
+
+  "personalInformation":{
+    "gender":"Female",
+    "dob":"2000-01-22",
+    "address":"Melavakkam, Chennai",
+    "contact":{
+    "personalPhoneNo":"1234567890",
+    "parentPhoneNo":"1234567890",
+    "parentAltPhoneNo":"1234567890",
+    "emailId":"jasmin.11@gmail.com"
+    }    
+  },  
+
+  "dateOfJoin":"2018-06-01",
+
+  "academicPerformance":[],
+
+  "nonAcademicPerformance":[],
+
+  "loginCredentials":{
+    "userName":"jasmine_01",
+    "password":"jasmine@123",
+    "confirmPassword":"jasmine@123"
+  },
+
+  "createdBy" : "Arivu"
+}
+
+
+### getAllStudents
+GET http://localhost:8081/staff/showAllStudents
+Authorization: Basic staff:staff@123
+
+
+### getStudentsByClassName
+GET http://localhost:8081/staff/showStudentsByClass/11th
+Authorization: Basic staff:staff@123
+
+
+### getStudentById
+GET http://localhost:8081/staff/showStudentById/2132
+Authorization: Basic staff:staff@123
+
+
+
+### getStudentByUserName
+GET http://localhost:8081/staff/showStudentByUserName/JASMINE_01
+Authorization: Basic staff:staff@123
+
+
+### updateStudent
+
+
+### removeStuent
+DELETE http://localhost:8081/staff/removeStudent
+Authorization: Basic staff:staff@123
+Content-Type: application/json
+
+{
+  "sId":3001,
+  "studentName":"Jasmine",
+  "userName":"jasmine_01",
+  "class":"11th"
+}
+
+
+
+### createEvent
+POST http://localhost:8081/staff/createEvents
+Authorization: Basic staff:staff@123
+Content-Type: application/json
+
+{
+  "events":[
+    {
+      "eventName":"English Speech",
+      "eventDate":"2021-04-02",
+      "eventStartTime":6872942,
+      "eventDuration":2,
+      "assignedTo":"11th"
+    },
+    {
+      "eventName":"Form Meeting",
+      "eventDate":"2021-04-12",
+      "eventStartTime":123123112,
+      "eventDuration":1,
+      "assignedTo":"12th"
+    }
+  ]
+}
+
+
+### showAllEvents
+GET http://localhost:8081/staff/showAllEvents
+Authorization: Basic staff:staff@123
+
+
+### showEventsByDate
+GET http://localhost:8081/staff/showEventByDate?Date=2021-04-02
+Authorization: Basic staff:staff@123
+
+
+### showEventByClassName
+GET http://localhost:8081/staff/showEventByClassName?Class=10th
+Authorization: Basic staff:staff@123
+
+
+### createNotification
+POST http://localhost:8081/staff/createNotification
+Authorization: Basic staff:staff@123
+Content-Type: application/json
+
+{
+  "notificationHeading":"Reg: Fees Deails",
+  "notificationMessage":"Student please Pay the full Fees Amount within 2 Days",
+  "date":"2021-02-12",
+  "class":"11th",
+  "authorizedBy":"Arivu"
+}
+
+
+### showAllNotifications
+GET http://localhost:8081/staff/showAllNotifications
+Authorization: Basic staff:staff@123
+
+
+### showNotificationByClass
+GET http://localhost:8081/staff/showNotificationForClass/12th
+Authorization: Basic staff:staff@123
+
+
+### showNotificationByDate
+GET http://localhost:8081/staff/showNotificationByDate?Date=2021-02-11
+Authorization: Basic staff:staff@123
+
+
+### showNotification
+GET http://localhost:8081/staff/showNotification/11th?Date=2021-02-12
+Authorization: Basic staff:staff@123
+
+
+
+
+### createContents
+POST http://localhost:8081/staff/createContents
+Authorization: Basic staff:staff@123
+Content-Type: multipart/form-data
+
+{
+  "fileId":10021,
+  "file":"path/fileName.txt",
+  "class":"12th",
+  "subject":"Physics-1",
+  "createdBy":"Arivu"
+}
+
+
+### showContents
+GET http://localhost:8081/staff/showAllContents
+Authorization: Basic staff:staff@123
+
+
+### showContentByClass
+GET http://localhost:8081/staff/showContentByClassName/11th
+Authorization: Basic staff:staff@123
+
+
+
+
+
+
+### simple ftp test
+GET http://localhost:8081/staff/ftp
+Authorization: Basic staff:staff@123
+
+
+
+
+
+
+### student
+GET http://localhost:8081/student/
+
+
+### studentLogin
+POST http://localhost:8081/student/login
+Content-Type: application/json
+
+{
+  "username":"BALAN_01",
+  "password":"balan@123",
+  "confirmPassword":"balan@123"
+}
+
+
+### getStudentDetails
+GET http://localhost:8081/student/getStudentDetails
+Content-Type: application/json
+
+{
+  "name":"Jasmine"
+}
+
+
+### getContents
+GET http://localhost:8081/student/getContent/12th/2021-07-04
+
+### getNotification
+GET http://localhost:8081/student/getNotification/12th?Date=2021-02-11
+
+### getEvent
+GET http://localhost:8081/student/getEvents/12th?Date=2021-06-20

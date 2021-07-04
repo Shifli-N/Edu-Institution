@@ -1,0 +1,10 @@
+PORT = yours_port
+DB_URI = yours_db_path
+
+
+/**
+ex:-
+
+PORT = 5000
+DB_URI = mongodb://localhost:27017/edu-Institute
+*/
