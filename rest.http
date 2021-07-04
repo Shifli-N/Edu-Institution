@@ -1,10 +1,7 @@
-// Educational-Institute Test Project
+// Simple Educational-Institute Test Project
 
 @baseUrl = http://localhost:8081
 @user-agent = rest-client-ext
-@baseAuth = admin
-@basePass = admin
-
 
 
 ### Home-Page
@@ -17,7 +14,6 @@ GET http://localhost:8081/abc
 
 ### superAdmin home
 GET http://localhost:8081/superAdmin/
-# Authorization: Basic {{baseAuth}} {{basePass}}
 User-Agent: {{user-agent}}
 Authorization: Basic admin admin
 
