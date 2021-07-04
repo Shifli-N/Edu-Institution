@@ -1,9 +1,10 @@
 # Educational Institution Backend Application
-This a Simple Practice Node Application for Educational Institution.
+This a Simple Practice Node Application for Educational Institution. <br/>
+(My main objective of this Project is To Learn JS, Rest API's and Node)
 
 # Application Flow
 In this Project, There have Four roles (i.e) Super Admin, Admins, Staffs and Students. <br/>
-Every One have seprate Login and specific jobs.<br/>
+Every One have separate Login and specific jobs.<br/>
 1. Super Admin :<br/>
     Only one Super Admin is Present, He able to Create Admins.<br/>
     <br/>
