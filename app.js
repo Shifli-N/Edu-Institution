@@ -12,6 +12,7 @@ const admin = require('./src/admin');
 const staff = require('./src/staff');
 const student = require('./src/student');
 const { ValidationError } = require('joi');
+const { reqLog } = require('./utils/winstonLogger');
 
 
 const app = express();
@@ -22,6 +23,18 @@ const DB_PATH = process.env.DB_URI;
 app.use(express.json({}));
 
 connectDB(DB_PATH);
+
+//for request log
+app.use(function(req,res,next){
+    reqLog(`${req.method} ${req.url}`);
+    
+    if(Object.keys(req.body).length > 0){
+        reqLog(`${JSON.stringify(req.body)}`);
+    }
+
+    next();
+});
+
 
 app.all('/', async function(req,res,next){
 
